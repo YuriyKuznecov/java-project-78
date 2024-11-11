@@ -1,49 +1,58 @@
 package hexlet.code.schemas;
 
 import hexlet.code.Validator;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 
 class StringSchemaTest {
     private final String text = "what does the fox say";
+    private final int number = 3;
+    private StringSchema schema;
+
+    @BeforeEach
+    public void beforeEach() {
+        schema = new Validator().string();
+    }
+
 
     @Test
     void testIsValid() {
-        StringSchema schema1 = new Validator().string();
 
-        assertTrue(schema1.isValid(text));
-        assertTrue(schema1.isValid(""));
-        assertTrue(schema1.isValid(null));
+        assertTrue(schema.isValid(text));
+        assertTrue(schema.isValid(""));
+        assertTrue(schema.isValid(null));
+        assertFalse(schema.isValid(number));
     }
 
     @Test
     void testRequired() {
-        StringSchema schema2 = new Validator().string().required();
+        schema.required();
 
-        assertFalse(schema2.isValid(""));
-        assertFalse(schema2.isValid(null));
+        assertFalse(schema.isValid(""));
+        assertFalse(schema.isValid(null));
     }
 
     @Test
     void testMinLength() {
-        int minLength = 3;
-        StringSchema schema3 = new Validator().string().minLength(minLength);
+        schema.minLength(number);
 
-        assertTrue(schema3.isValid(text));
-        assertTrue(schema3.isValid(null));
-        assertFalse(schema3.isValid(""));
-        assertFalse(schema3.isValid("hx"));
+        assertTrue(schema.isValid(text));
+        assertTrue(schema.isValid(null));
+        assertFalse(schema.isValid(""));
+        assertFalse(schema.isValid("hx"));
     }
 
     @Test
     void testContains() {
-        StringSchema schema4 = new Validator().string().contains("the");
+        schema.contains("the");
 
-        assertTrue(schema4.isValid(text));
-        assertTrue(schema4.isValid(null));
-        assertFalse(schema4.isValid(""));
-        assertFalse(schema4.isValid("hex"));
+        assertTrue(schema.isValid(text));
+        assertTrue(schema.isValid(null));
+        assertFalse(schema.isValid(""));
+        assertFalse(schema.isValid("hex"));
     }
-
 }
