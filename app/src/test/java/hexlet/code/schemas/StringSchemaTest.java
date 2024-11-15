@@ -48,10 +48,10 @@ class StringSchemaTest {
 
     @Test
     void testContains() {
-        schema.contains("the");
+        schema.contains("the").required();
 
         assertTrue(schema.isValid(text));
-        assertTrue(schema.isValid(null));
+        assertFalse(schema.isValid(null));
         assertFalse(schema.isValid(""));
         assertFalse(schema.isValid("hex"));
     }

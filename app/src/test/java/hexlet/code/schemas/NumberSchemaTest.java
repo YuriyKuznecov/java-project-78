@@ -48,9 +48,9 @@ class NumberSchemaTest {
     void range() {
         int min = 5;
         int max = 10;
-        schema.range(min, max);
+        schema.range(min, max).required();
 
-        assertTrue(schema.isValid(null));
+        assertFalse(schema.isValid(null));
         assertTrue(schema.isValid(positive));
         assertFalse(schema.isValid(zero));
     }

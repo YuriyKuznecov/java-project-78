@@ -10,16 +10,19 @@ public class StringSchema extends BaseSchema {
     }
 
     @Override
-    public void required() {
+    public StringSchema required() {
         checks.add(o -> !StringUtils.isEmpty((String) o));
+        return this;
     }
 
-    public void minLength(int a) {
+    public StringSchema minLength(int a) {
         checks.add(o -> Objects.isNull(o) || ((String) o).length() >= a);
+        return this;
     }
 
-    public void contains(String str) {
+    public StringSchema contains(String str) {
         checks.add(o -> Objects.isNull(o) || ((String) o).contains(str));
+        return this;
     }
 
 }

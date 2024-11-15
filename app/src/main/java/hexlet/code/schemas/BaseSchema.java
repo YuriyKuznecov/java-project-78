@@ -13,7 +13,8 @@ public class BaseSchema {
                 .allMatch(i -> i.test(o));
     }
 
-    protected void required() {
+    protected BaseSchema required() {
         checks.add(Objects::nonNull);
+        return this;
     }
 }

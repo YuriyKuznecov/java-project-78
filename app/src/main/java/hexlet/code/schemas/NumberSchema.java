@@ -8,12 +8,14 @@ public class NumberSchema extends BaseSchema {
         checks.add(o -> Objects.isNull(o) || o instanceof Integer);
     }
 
-    public void positive() {
+    public NumberSchema positive() {
         checks.add(o -> Objects.isNull(o) || (Integer) o > 0);
+        return this;
     }
 
-    public void range(int a, int b) {
+    public NumberSchema range(int a, int b) {
         checks.add(o -> Objects.isNull(o) || (Integer) o >= a && (Integer) o <= b);
+        return this;
     }
 
 }
