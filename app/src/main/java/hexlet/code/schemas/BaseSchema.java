@@ -8,12 +8,12 @@ import java.util.function.Predicate;
 public class BaseSchema {
     List<Predicate<Object>> checks = new ArrayList<>();
 
-    protected  boolean isValid(Object o) {
+    public boolean isValid(Object o) {
         return checks.stream()
                 .allMatch(i -> i.test(o));
     }
 
-    protected BaseSchema required() {
+    public BaseSchema required() {
         checks.add(Objects::nonNull);
         return this;
     }
