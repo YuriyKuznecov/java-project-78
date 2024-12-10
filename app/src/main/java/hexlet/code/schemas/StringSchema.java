@@ -3,7 +3,7 @@ package hexlet.code.schemas;
 import org.apache.commons.lang3.StringUtils;
 import java.util.Objects;
 
-public class StringSchema extends BaseSchema {
+public class StringSchema extends BaseSchema<String> {
 
     public StringSchema() {
         checks.add(o -> Objects.isNull(o) || o instanceof String);

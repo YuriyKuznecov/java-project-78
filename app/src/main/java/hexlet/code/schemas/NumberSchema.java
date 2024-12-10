@@ -2,7 +2,7 @@ package hexlet.code.schemas;
 
 import java.util.Objects;
 
-public class NumberSchema extends BaseSchema {
+public class NumberSchema extends BaseSchema<Number> {
 
     public NumberSchema() {
         checks.add(o -> Objects.isNull(o) || o instanceof Integer);

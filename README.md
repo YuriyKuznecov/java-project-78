@@ -4,3 +4,24 @@
 ### [![Maintainability](https://api.codeclimate.com/v1/badges/9bc2f3af718043eda20d/maintainability)](https://codeclimate.com/github/YuriyKuznecov/java-project-78/maintainability)
 
 ### [![Test Coverage](https://api.codeclimate.com/v1/badges/9bc2f3af718043eda20d/test_coverage)](https://codeclimate.com/github/YuriyKuznecov/java-project-78/test_coverage)
+
+## Проект представляет собой библиотеку для проверки корректности данных.
+
+## Setup
+
+```bash
+make -C app build
+```
+
+## Run tests
+
+```bash
+make -C app test
+```
+
+## Run checkstyle
+
+```bash
+make -C app lint
+```
+

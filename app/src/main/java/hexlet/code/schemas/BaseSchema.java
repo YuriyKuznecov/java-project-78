@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.function.Predicate;
 
-public class BaseSchema {
+public class BaseSchema<T> {
     List<Predicate<Object>> checks = new ArrayList<>();
 
     public boolean isValid(Object o) {
@@ -13,7 +13,7 @@ public class BaseSchema {
                 .allMatch(i -> i.test(o));
     }
 
-    public BaseSchema required() {
+    public BaseSchema<T> required() {
         checks.add(Objects::nonNull);
         return this;
     }
