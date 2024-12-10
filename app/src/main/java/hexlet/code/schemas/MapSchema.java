@@ -3,7 +3,7 @@ package hexlet.code.schemas;
 import java.util.Map;
 import java.util.Objects;
 
-public class MapSchema extends BaseSchema<Map<?, ?>> {
+public class MapSchema extends BaseSchema<Map<String, Object>> {
 
     public MapSchema() {
         checks.add(o -> Objects.isNull(o) || o instanceof Map<?, ?>);
@@ -14,7 +14,7 @@ public class MapSchema extends BaseSchema<Map<?, ?>> {
         return this;
     }
 
-    public MapSchema shape(Map<String, BaseSchema<?>> schemas) {
+    public MapSchema shape(Map<String, BaseSchema<String>> schemas) {
         checks.add(mapItem -> Objects.isNull(mapItem)
                 || schemas.entrySet().stream().allMatch(check -> {
                     Object value = ((Map<?, ?>) mapItem).get(check.getKey());

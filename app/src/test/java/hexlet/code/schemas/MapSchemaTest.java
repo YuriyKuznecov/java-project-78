@@ -54,18 +54,18 @@ class MapSchemaTest {
 
     @Test
     void testShape() {
-        Map<String, BaseSchema<?>> schemas = new HashMap<>();
-        schemas.put("id", v.number().positive().required());
-        schemas.put("userName", v.string().minLength(MAP_SIZE).required());
+        Map<String, BaseSchema<String>> schemas = new HashMap<>();
+        schemas.put("firstName", v.string().required());
+        schemas.put("lastName", v.string().minLength(2).required());
         Map<String, Object> map1 = new HashMap<>();
-        map1.put("id", 10);
-        map1.put("userName", "John");
+        map1.put("firstName", "John");
+        map1.put("lastName", "Smith");
         Map<String, Object> map2 = new HashMap<>();
-        map2.put("id", 0);
-        map2.put("userName", "Nikolay");
+        map2.put("userName", "John");
+        map2.put("lastName", null);
         Map<String, Object> map3 = new HashMap<>();
-        map3.put("key", 5);
-        map3.put("userName", null);
+        map3.put("firstName", "Anna");
+        map3.put("lastName", "B");
 
         schema.shape(schemas);
         assertTrue(schema.isValid(map1));
