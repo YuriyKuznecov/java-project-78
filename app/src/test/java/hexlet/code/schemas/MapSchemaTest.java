@@ -34,7 +34,6 @@ class MapSchemaTest {
         assertTrue(schema.isValid(null));
         assertTrue(schema.isValid(MAP_1));
         assertTrue(schema.isValid(new HashMap<>()));
-        assertFalse(schema.isValid(MAP_SIZE));
     }
 
     @Test

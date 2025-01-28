@@ -1,21 +1,18 @@
 package hexlet.code.schemas;
 
-import java.util.Objects;
+import java.util.function.Predicate;
 
 public class NumberSchema extends BaseSchema<Integer> {
 
-    public NumberSchema() {
-        checks.add(o -> Objects.isNull(o) || o instanceof Integer);
-    }
-
     public NumberSchema positive() {
-        checks.add(o -> Objects.isNull(o) || (Integer) o > 0);
+        Predicate<Integer> positive = s -> s == null || (int) s > 0;
+        addCheck("positive", positive);
         return this;
     }
 
     public NumberSchema range(int a, int b) {
-        checks.add(o -> Objects.isNull(o) || (Integer) o >= a && (Integer) o <= b);
+        Predicate<Integer> range = s -> s  == null || (int) s >= a && (int) s <= b;
+        addCheck("range", range);
         return this;
     }
-
 }

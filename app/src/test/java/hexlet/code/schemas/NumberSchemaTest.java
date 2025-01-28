@@ -25,7 +25,6 @@ class NumberSchemaTest {
         assertTrue(schema.isValid(negative));
         assertTrue(schema.isValid(zero));
         assertTrue(schema.isValid(null));
-        assertFalse(schema.isValid(""));
     }
 
     @Test

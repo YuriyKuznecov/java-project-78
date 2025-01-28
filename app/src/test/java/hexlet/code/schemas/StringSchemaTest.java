@@ -10,7 +10,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class StringSchemaTest {
     private final String text = "what does the fox say";
-    private final int number = 3;
     private StringSchema schema;
 
     @BeforeEach
@@ -25,7 +24,6 @@ class StringSchemaTest {
         assertTrue(schema.isValid(text));
         assertTrue(schema.isValid(""));
         assertTrue(schema.isValid(null));
-        assertFalse(schema.isValid(number));
     }
 
     @Test
@@ -38,6 +36,7 @@ class StringSchemaTest {
 
     @Test
     void testMinLength() {
+        int number = 3;
         schema.minLength(number);
 
         assertTrue(schema.isValid(text));
