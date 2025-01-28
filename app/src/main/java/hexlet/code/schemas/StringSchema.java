@@ -5,7 +5,7 @@ import java.util.function.Predicate;
 public class StringSchema extends BaseSchema<String> {
 
     @Override
-    public StringSchema required() {
+    public final StringSchema required() {
         Predicate<String> required = s -> (s != null) && !s.isEmpty();
         addCheck("required", required);
         return this;
