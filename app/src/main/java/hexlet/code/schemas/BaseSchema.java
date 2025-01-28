@@ -13,12 +13,12 @@ public class BaseSchema<T> {
         checks.put(name, check);
     }
 
-    protected boolean isValid(T o) {
+    public boolean isValid(T o) {
         return checks.values().stream()
                 .allMatch(i -> i.test(o));
     }
 
-    protected BaseSchema<T> required() {
+    public BaseSchema<T> required() {
         Predicate<T> required = Objects::nonNull;
         addCheck("required", required);
         return this;
