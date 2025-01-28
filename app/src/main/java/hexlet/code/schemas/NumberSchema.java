@@ -4,13 +4,13 @@ import java.util.function.Predicate;
 
 public class NumberSchema extends BaseSchema<Integer> {
 
-    public NumberSchema positive() {
+    public final NumberSchema positive() {
         Predicate<Integer> positive = s -> s == null || (int) s > 0;
         addCheck("positive", positive);
         return this;
     }
 
-    public NumberSchema range(int a, int b) {
+    public final NumberSchema range(int a, int b) {
         Predicate<Integer> range = s -> s  == null || (int) s >= a && (int) s <= b;
         addCheck("range", range);
         return this;

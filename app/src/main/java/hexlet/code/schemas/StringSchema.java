@@ -11,13 +11,13 @@ public class StringSchema extends BaseSchema<String> {
         return this;
     }
 
-    public StringSchema minLength(int a) {
+    public final StringSchema minLength(int a) {
         Predicate<String> minLength = s -> s == null || s.length() >= a;
         addCheck("minLength", minLength);
         return this;
     }
 
-    public StringSchema contains(String str) {
+    public final StringSchema contains(String str) {
         Predicate<String> contains = s -> s == null || s.contains(str);
         addCheck("contains", contains);
         return this;

@@ -6,13 +6,13 @@ import java.util.function.Predicate;
 
 public class MapSchema extends BaseSchema<Map<?, ?>> {
 
-    public MapSchema sizeof(int a) {
+    public final MapSchema sizeof(int a) {
         Predicate<Map<?, ?>> sizeOf = s -> Objects.isNull(s) || s.size() == a;
         addCheck("sizeOf", sizeOf);
         return this;
     }
 
-    public MapSchema shape(Map<String, ? extends BaseSchema> schemas) {
+    public final MapSchema shape(Map<String, ? extends BaseSchema> schemas) {
         Predicate<Map<?, ?>> shape = map ->
             schemas.entrySet()
                     .stream()

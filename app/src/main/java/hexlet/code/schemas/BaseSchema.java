@@ -13,7 +13,7 @@ public class BaseSchema<T> {
         checks.put(name, check);
     }
 
-    public boolean isValid(T o) {
+    public final boolean isValid(T o) {
         return checks.values().stream()
                 .allMatch(i -> i.test(o));
     }
