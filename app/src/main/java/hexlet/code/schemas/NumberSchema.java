@@ -18,7 +18,7 @@ public class NumberSchema extends BaseSchema<Integer> {
     }
 
     @Override
-    public BaseSchema<Integer> required() {
+    public final BaseSchema<Integer> required() {
         Predicate<Integer> required = Objects::nonNull;
         addCheck("required", required);
         return this;
