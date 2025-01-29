@@ -1,5 +1,6 @@
 package hexlet.code.schemas;
 
+import java.util.Objects;
 import java.util.function.Predicate;
 
 public class NumberSchema extends BaseSchema<Integer> {
@@ -13,6 +14,13 @@ public class NumberSchema extends BaseSchema<Integer> {
     public final NumberSchema range(int a, int b) {
         Predicate<Integer> range = s -> s  == null || s >= a && s <= b;
         addCheck("range", range);
+        return this;
+    }
+
+    @Override
+    public BaseSchema<Integer> required() {
+        Predicate<Integer> required = Objects::nonNull;
+        addCheck("required", required);
         return this;
     }
 }

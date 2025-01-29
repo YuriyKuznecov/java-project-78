@@ -22,4 +22,10 @@ public class MapSchema extends BaseSchema<Map<?, ?>> {
     }
 
 
+    @Override
+    public BaseSchema<Map<?, ?>> required() {
+        Predicate<Map<?, ?>> required = Objects::nonNull;
+        addCheck("required", required);
+            return this;
+    }
 }

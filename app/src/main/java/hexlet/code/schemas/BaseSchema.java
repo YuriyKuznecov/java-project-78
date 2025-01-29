@@ -18,9 +18,6 @@ public abstract class BaseSchema<T> {
                 .allMatch(i -> i.test(o));
     }
 
-    public BaseSchema<T> required() {
-        Predicate<T> required = Objects::nonNull;
-        addCheck("required", required);
-        return this;
-    }
+
+    public abstract BaseSchema<T> required();
 }
